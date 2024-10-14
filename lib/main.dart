@@ -20,8 +20,9 @@ class GameProvider extends ChangeNotifier {
   GameProvider() {
     // Initialize the list of cards
     for (int i = 0; i < 8; i++) {
-      cards.add(GameCard("assets/card_front_$i.png", "assets/card_back.png"));
-      cards.add(GameCard("assets/card_front_$i.png", "assets/card_back.png")); // Pairing cards
+      // Create pairs of cards
+      cards.add(GameCard("assets/card_front_$i.jpg", "assets/card_back.jpg"));
+      cards.add(GameCard("assets/card_front_$i.jpg", "assets/card_back.jpg"));
     }
     cards.shuffle(); // Shuffle cards to randomize their order
   }
@@ -109,7 +110,7 @@ class CardMatchingGame extends StatelessWidget {
           ),
           body: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
+              crossAxisCount: 4, // 4 columns for a 4x4 grid
             ),
             itemCount: provider.cards.length,
             itemBuilder: (context, index) {
